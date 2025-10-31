@@ -1,0 +1,13 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.loading-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(248, 249, 250, 0.85);
+  z-index: 1055;
+  align-items: center;
+  justify-content: center;
+}
