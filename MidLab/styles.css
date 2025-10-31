@@ -7,8 +7,8 @@
 body {
     margin: 0;
     font-family: 'Lato', sans-serif;
-    background-color: #0e0e12;
-    color: #f4f4f8;
+    background-color: #ffffff;
+    color: #111217;
 }
 
 .headPlaceHolder,
@@ -171,7 +171,7 @@ body {
 }
 
 .text-muted {
-    color: rgba(244, 244, 248, 0.65);
+    color: rgba(17, 18, 23, 0.6);
 }
 
 .list-inline {
@@ -194,13 +194,19 @@ a {
 }
 
 .cv-wrapper {
-    background: linear-gradient(135deg, rgba(12, 12, 18, 0.95), rgba(32, 32, 38, 0.95));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 248, 0.98));
     border-radius: 18px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 18px 50px rgba(17, 20, 24, 0.08);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: #00d4aa 2px solid;
+
 }
 
 .cv-header {
     max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cv-name {
@@ -223,7 +229,7 @@ a {
     margin: 1.5rem auto 0;
     max-width: 540px;
     line-height: 1.7;
-    color: rgba(244, 244, 248, 0.75);
+    color: rgba(17, 18, 23, 0.72);
 }
 
 .contact-chip {
@@ -241,13 +247,16 @@ a {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cv-section {
     padding: 1.75rem 2rem;
     border-radius: 14px;
-    background-color: rgba(19, 19, 27, 0.78);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(10, 13, 18, 0.08);
     transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -273,7 +282,7 @@ a {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: #ffffff;
+    color: #111217;
     cursor: pointer;
     position: relative;
     padding-right: 32px;
@@ -286,8 +295,8 @@ a {
     right: 0;
     width: 18px;
     height: 18px;
-    border-right: 2px solid rgba(255, 255, 255, 0.45);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.45);
+    border-right: 2px solid rgba(17, 18, 23, 0.35);
+    border-bottom: 2px solid rgba(17, 18, 23, 0.35);
     transform: translateY(-50%) rotate(45deg);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
@@ -319,7 +328,7 @@ a {
 .cv-section-details p,
 .cv-section-details li,
 .cv-section-details dd {
-    color: rgba(244, 244, 248, 0.78);
+    color: rgba(17, 18, 23, 0.78);
 }
 
 .row {
@@ -343,7 +352,7 @@ dt {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(17, 18, 23, 0.7);
 }
 
 dd {
@@ -366,7 +375,7 @@ dd {
 .cv-timeline-meta {
     margin: 0.4rem 0 0.8rem;
     font-size: 0.9rem;
-    color: rgba(244, 244, 248, 0.6);
+    color: rgba(17, 18, 23, 0.55);
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
