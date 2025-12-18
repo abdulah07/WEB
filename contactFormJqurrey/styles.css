@@ -1,0 +1,51 @@
+html, body { overflow-x: hidden; }
+
+body.bg-light {
+  background: linear-gradient(135deg, #9fcd33 0%, #ffd200 100%);
+  background-attachment: fixed;
+  color: #212529;
+}
+
+.summary-card { position: static; }
+@media (min-width: 992px) {
+  .summary-card {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  outline: 0;
+}
+
+input:invalid, textarea:invalid, select:invalid {
+  border-color: #dc3545;
+}
+input:valid, textarea:valid, select:valid {
+  border-color: #198754;
+}
+
+.form-control:invalid ~ .invalid-feedback,
+.form-control:invalid ~ .form-text + .invalid-feedback,
+textarea:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.form-floating > .form-control, .form-floating > textarea {
+  min-height: calc(1.5em + .75rem + 2px);
+}
+
+label[for]::after {
+  content: '';
+}
+input[required] + label::after,
+textarea[required] + label::after,
+input[required] ~ label::after,
+textarea[required] ~ label::after {
+  content: ' *';
+  color: #d63384;
+  margin-left: .15rem;
+}
+
+details summary { cursor: pointer; }
+details[open] summary { font-weight: 600; }
