@@ -1,0 +1,54 @@
+<section class="homePage" style="width: 100%;">
+
+
+  <div class="hero hero--fixed">
+    <img src="/images/hero-banner.png" alt="Hero Banner" />
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1 class="hero-title">RISE ABOVE <br> THE NOISE!</h1>
+        <p class="hero-subtitle">Elevated streetwear essentials <br>designed for your urban ascent.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="homePage-block" style="text-align: center; margin-top: var(--space-12); margin-bottom: var(--space-12);">
+        <h1 class="homePage-text" style="font-family: var(--font-sans-strong); font-size: var(--font-size-3xl); color: var(--color-black-90)">SHOP AWESOME PRODUCTS!</h1>
+  </div>
+  
+  <form action="/" method="GET" class="filters" style="display:flex; gap: var(--space-4); align-items:flex-end; margin-bottom: var(--space-6); justify-content: center;">
+    <div class="form-group" style="min-width: 200px;">
+      <label for="department" class="form-label">Department</label>
+      <select id="department" name="department" class="form-control">
+        <option value="">All</option>
+        <% (departments || []).forEach(function(dep){ %>
+          <option value="<%= dep %>" <%= (filters && filters.department === dep) ? 'selected' : '' %>><%= dep %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-group" style="min-width: 120px;">
+      <label for="minPrice" class="form-label">Min Price</label>
+      <input id="minPrice" type="number" name="minPrice" step="0.01" value="<%= (filters && filters.minPrice !== '') ? filters.minPrice : '' %>" class="form-control" />
+    </div>
+    <div class="form-group" style="min-width: 120px;">
+      <label for="maxPrice" class="form-label">Max Price</label>
+      <input id="maxPrice" type="number" name="maxPrice" step="0.01" value="<%= (filters && filters.maxPrice !== '') ? filters.maxPrice : '' %>" class="form-control" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="width:auto;">Apply</button>
+    <a href="/" class="btn btn-ghost" style="width:auto;">Clear</a>
+    
+  </form>
+
+
+  <div class="row" style="margin-top: var(--space-4);">
+    <% products.forEach(function(product) { %>
+      <div class="col-4" style="margin-bottom: var(--space-6);">
+        <%- include('../layouts/partials/product-card', { product: product }) %>
+      </div>
+    <% }); %>
+  </div>
+
+  <div class="pagination-center" style="display:flex; justify-content:center; margin-top: var(--space-4);">
+    <%- include('../layouts/partials/pagination', { page: page, totalPages: totalPages, basePath: '/', queryString: queryString }) %>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+<div class="cart-header" style="margin-bottom: var(--space-6);">
+  <h1 class="heading-2">Dashboard</h1>
+</div>
+
+<div class="row" style="margin-bottom: var(--space-6);">
+  <div class="col-4">
+    <div class="card" style="padding: var(--space-4); text-align: center;">
+      <h3 class="heading-4" style="color: var(--color-muted); margin-bottom: var(--space-2);">Total Products</h3>
+      <p class="heading-1" style="color: var(--color-accent); margin-bottom: 0;"><%= productCount %></p>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card" style="padding: var(--space-4); text-align: center;">
+      <h3 class="heading-4" style="color: var(--color-muted); margin-bottom: var(--space-2);">Total Orders</h3>
+      <p class="heading-1" style="color: var(--color-accent); margin-bottom: 0;"><%= orderCount %></p>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card" style="padding: var(--space-4); text-align: center;">
+      <h3 class="heading-4" style="color: var(--color-muted); margin-bottom: var(--space-2);">Total Users</h3>
+      <p class="heading-1" style="color: var(--color-accent); margin-bottom: 0;"><%= userCount %></p>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="padding: var(--space-6);">
+  <h2 class="heading-3">Quick Actions</h2>
+  <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+    <a href="/super-admin/products/create" class="btn btn-primary">Add New Product</a>
+    <a href="/super-admin/products" class="btn btn-secondary">View All Products</a>
+    <a href="/super-admin/orders" class="btn btn-secondary">View All Orders</a>
+    <a href="/" class="btn btn-ghost">Go to Homepage</a>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<section class="container">
+	<div class="contact-wrapper">
+		<header class="contact-header">
+			<h1 class="heading-2">Get in touch</h1>
+			<p class="lead text-muted">Have a question? We'd love to hear from you.</p>
+		</header>
+
+		<form action="/contact" method="post" novalidate>
+			  <%- include('../layouts/partials/form/input', {
+				  id: 'contact-name', name: 'name', label: 'Name', required: true,
+				  value: typeof form !== 'undefined' ? form.name : '',
+				  error: typeof errors !== 'undefined' && errors ? errors.name : null,
+				  help: ''
+			  }) %>
+
+			  <%- include('../layouts/partials/form/input', {
+				  id: 'contact-email', name: 'email', type: 'email', label: 'Email', required: true,
+				  value: typeof form !== 'undefined' ? form.email : '',
+				  error: typeof errors !== 'undefined' && errors ? errors.email : null,
+				  help: ''
+			  }) %>
+
+			<%- include('../layouts/partials/form/input', {
+					id: 'contact-subject', name: 'subject', label: 'Subject', required: true,
+					value: typeof form !== 'undefined' ? form.subject : '',
+					error: typeof errors !== 'undefined' && errors ? errors.subject : null,
+					help: ''
+			}) %>
+
+			<%- include('../layouts/partials/form/textarea', {
+					id: 'contact-message', name: 'message', label: 'Message', rows: 5, required: true,
+					value: typeof form !== 'undefined' ? form.message : '',
+					error: typeof errors !== 'undefined' && errors ? errors.message : null,
+                    help: ''
+			}) %>
+
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Send Message</button>
+			</div>
+		</form>
+
+		<aside class="contact-info">
+			<div class="contact-dl">
+				<div>
+					<dt class="contact-dt">Email</dt>
+					<dd class="contact-dd"><a href="mailto:support@example.com" style="color: inherit; text-decoration: none;">support@example.com</a></dd>
+				</div>
+				<div>
+					<dt class="contact-dt">Phone</dt>
+					<dd class="contact-dd">+92-300-0000000</dd>
+				</div>
+				<div>
+					<dt class="contact-dt">Location</dt>
+					<dd class="contact-dd">COMSATS Lahore</dd>
+				</div>
+			</div>
+		</aside>
+	</div>
+</section>

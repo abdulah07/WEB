@@ -1,0 +1,54 @@
+<div class="cart-header" style="margin-bottom: var(--space-4);">
+  <h1 class="heading-2">All Orders</h1>
+</div>
+
+<div class="card" style="padding: 0; overflow-x: auto;">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr style="background: var(--color-gray-100); border-bottom: 2px solid var(--color-gray-300);">
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Order ID</th>
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Customer</th>
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Date</th>
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Total</th>
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Status</th>
+        <th style="padding: var(--space-3); text-align: left; font-weight: 600; color: var(--color-black);">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (orders && orders.length > 0) { %>
+        <% orders.forEach(order => { %>
+          <tr style="border-bottom: 1px solid var(--color-gray-200);">
+            <td style="padding: var(--space-3); font-family: monospace; font-size: var(--font-size-sm);"><%= order._id %></td>
+            <td style="padding: var(--space-3);">
+              <%= order.shippingAddress ? order.shippingAddress.fullName : 'Guest' %>
+            </td>
+            <td style="padding: var(--space-3); color: var(--color-black-70);">
+              <%= new Date(order.createdAt).toLocaleDateString() %>
+            </td>
+            <td style="padding: var(--space-3); font-weight: 600;">$<%= order.totalAmount %></td>
+            <td style="padding: var(--space-3);">
+              <span style="
+                padding: 4px 8px; 
+                border-radius: var(--radius-round); 
+                font-size: var(--font-size-xs); 
+                font-weight: 600; 
+                text-transform: uppercase;
+                background-color: <%= order.status === 'pending' ? '#fff7ed' : (order.status === 'completed' ? '#f0fdf4' : '#f3f4f6') %>;
+                color: <%= order.status === 'pending' ? '#c2410c' : (order.status === 'completed' ? '#15803d' : '#4b5563') %>;
+              ">
+                <%= order.status %>
+              </span>
+            </td>
+            <td style="padding: var(--space-3);">
+               <a href="/super-admin/orders/<%= order._id %>" class="btn btn-ghost" style="font-size: var(--font-size-sm); padding: var(--space-1) var(--space-2);">View</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="6" style="padding: var(--space-6); text-align: center; color: var(--color-muted);">No orders found.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

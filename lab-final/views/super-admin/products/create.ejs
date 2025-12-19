@@ -1,0 +1,79 @@
+<div class="cart-header" style="margin-bottom: var(--space-4);">
+  <h1 class="heading-2">Create New Product</h1>
+  <div class="cart-header-actions">
+    <a href="/super-admin/products" class="btn btn-ghost">
+      <svg class="icon icon--sm"><use href="/icons.svg#chevron-left"></use></svg>
+      Back to Products
+    </a>
+  </div>
+</div>
+
+<div class="card" style="padding: var(--space-4); max-width: 600px;">
+  <form action="/super-admin/products/create" method="POST" enctype="multipart/form-data">
+    <%- include('../../layouts/partials/form/input', {
+      id: 'name',
+      name: 'name',
+      label: 'Product Name',
+      type: 'text',
+      value: '',
+      error: '',
+      help: '',
+      required: true
+    }) %>
+
+    <%- include('../../layouts/partials/form/input', {
+      id: 'price',
+      name: 'price',
+      label: 'Price',
+      type: 'text',
+      value: '',
+      error: '',
+      help: 'Enter price in dollars (e.g., 29.99)',
+      required: true
+    }) %>
+
+    <%- include('../../layouts/partials/form/input', {
+      id: 'color',
+      name: 'color',
+      label: 'Color',
+      type: 'text',
+      value: '',
+      error: '',
+      help: '',
+      required: false
+    }) %>
+
+    <%- include('../../layouts/partials/form/input', {
+      id: 'department',
+      name: 'department',
+      label: 'Department',
+      type: 'text',
+      value: '',
+      error: '',
+      help: '',
+      required: false
+    }) %>
+
+    <%- include('../../layouts/partials/form/textarea', {
+      id: 'description',
+      name: 'description',
+      label: 'Description',
+      value: '',
+      error: '',
+      help: '',
+      rows: 4,
+      required: false
+    }) %>
+
+    <div class="form-field">
+      <label class="form-label" for="image">Product Image</label>
+      <input type="file" name="image" id="image" class="form-input" accept="image/*" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Create Product</button>
+      <a href="/super-admin/products" class="btn btn-ghost">Cancel</a>
+    </div>
+  </form>
+</div>
+  

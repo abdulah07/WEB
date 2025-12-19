@@ -1,0 +1,10 @@
+/* Alerts component */
+.alert { padding: var(--space-3) 0; }
+.alert .alert-inner { display: flex; align-items: center; gap: var(--space-3); }
+.alert .alert-icon { display: inline-flex; align-items: center; justify-content: center; }
+.alert .alert-message { font-family: var(--font-sans-body); font-size: var(--font-size-base); }
+
+/* Variants (based on flash.type) */
+.alert.success { background-color: rgba(0, 212, 170, 0.12); color: var(--color-black); }
+.alert.danger, .alert.error { background-color: rgba(255, 0, 0, 0.12); color: var(--color-black); }
+.alert.info { background-color: rgba(0, 0, 0, 0.06); color: var(--color-black); }

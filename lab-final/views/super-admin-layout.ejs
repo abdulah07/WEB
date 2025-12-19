@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title : 'Admin Panel' %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/components/header.css" />
+  <link rel="stylesheet" href="/stylesheets/components/footer.css" />
+  <link rel="stylesheet" href="/stylesheets/components/alerts.css" />
+  <link rel="stylesheet" href="/stylesheets/components/form.css" />
+  <link rel="stylesheet" href="/stylesheets/pages/cart.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/super-admin" class="brand">
+        <span class="store-name">ADMIN PANEL</span>
+      </a>
+
+      <nav aria-label="Admin Navigation" class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/super-admin" class="btn btn-ghost">Dashboard</a></li>
+          <li><a href="/super-admin/products" class="btn btn-ghost">Products</a></li>
+          <li><a href="/super-admin/orders" class="btn btn-ghost">Orders</a></li>
+          <li><a href="/" class="btn btn-primary">
+            <svg class="icon icon--sm"><use href="/icons.svg#home"></use></svg>
+            <span>Visit Site</span>
+          </a></li>
+          <li><a href="/logout" class="btn btn-secondary">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top: var(--space-6); margin-bottom: var(--space-6);">
+    <%- body %>
+  </main>
+
+  <script

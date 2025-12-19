@@ -1,0 +1,80 @@
+<section class="container" style="margin-top: var(--space-6); margin-bottom: var(--space-8);">
+  <div class="cart-header">
+    <h1 class="heading-2">My Account</h1>
+  </div>
+
+  <div class="row" style="display: flex; gap: var(--space-6); flex-wrap: wrap;">
+    <!-- User Info -->
+    <div style="flex: 1 1 300px; max-width: 300px;">
+      <div class="card" style="padding: var(--space-4);">
+        <h2 class="heading-4" style="margin-bottom: var(--space-4);">Profile</h2>
+        <div style="margin-bottom: var(--space-4);">
+          <h4 class="heading-6" style="color: var(--color-muted); margin-bottom: var(--space-1);">Name</h4>
+          <p><%= user.name %></p>
+        </div>
+        <div>
+          <h4 class="heading-6" style="color: var(--color-muted); margin-bottom: var(--space-1);">Email</h4>
+          <p><%= user.email %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order History -->
+    <div style="flex: 1 1 600px;">
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <div style="padding: var(--space-4); border-bottom: 1px solid var(--color-gray-200);">
+          <h2 class="heading-4" style="margin: 0;">Order History</h2>
+        </div>
+        
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="background: var(--color-gray-100);">
+                <th style="padding: var(--space-3); text-align: left;">Order ID</th>
+                <th style="padding: var(--space-3); text-align: left;">Date</th>
+                <th style="padding: var(--space-3); text-align: left;">Status</th>
+                <th style="padding: var(--space-3); text-align: right;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (orders && orders.length > 0) { %>
+                <% orders.forEach(order => { %>
+                  <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                    <td style="padding: var(--space-3); font-family: monospace; font-size: var(--font-size-sm);">
+                      #<%= order._id.toString().slice(-6) %>
+                    </td>
+                    <td style="padding: var(--space-3); color: var(--color-black-70);">
+                      <%= new Date(order.createdAt).toLocaleDateString() %>
+                    </td>
+                    <td style="padding: var(--space-3);">
+                      <span style="
+                        padding: 2px 8px; 
+                        border-radius: var(--radius-round); 
+                        font-size: var(--font-size-xs); 
+                        font-weight: 600; 
+                        text-transform: uppercase;
+                        background-color: <%= order.status === 'pending' ? '#fff7ed' : (order.status === 'completed' ? '#f0fdf4' : '#f3f4f6') %>;
+                        color: <%= order.status === 'pending' ? '#c2410c' : (order.status === 'completed' ? '#15803d' : '#4b5563') %>;
+                      ">
+                        <%= order.status %>
+                      </span>
+                    </td>
+                    <td style="padding: var(--space-3); text-align: right; font-weight: 600;">
+                      $<%= order.totalAmount %>
+                    </td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td colspan="4" style="padding: var(--space-6); text-align: center; color: var(--color-muted);">
+                    You haven't placed any orders yet.
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

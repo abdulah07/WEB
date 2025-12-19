@@ -1,0 +1,93 @@
+<section class="container cart-section">
+  <div class="cart-header">
+    <h1 class="heading-2">Shopping Cart</h1>
+    <div class="cart-header-actions">
+      <a href="/" class="btn btn-ghost">
+        <svg class="icon icon--sm"><use href="/icons.svg#chevron-left"></use></svg>
+        Continue Shopping
+      </a>
+    </div>
+  </div>
+
+  <% if (!products || products.length === 0) { %>
+    <div class="cart-empty">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+      <h2>Your Cart is Empty</h2>
+      <p>Looks like you haven't added any items to your cart yet. Explore our products and find something you love!</p>
+      <a href="/" class="btn btn-primary">Start Shopping</a>
+    </div>
+  <% } else { %>
+    <div class="cart-table-wrapper">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach(function(product) { %>
+            <tr>
+              <td class="cart-product-name">
+                <%= product.name %>
+              </td>
+              <td class="cart-price">
+                $<%= product.price %>
+              </td>
+              <td>
+                <div class="cart-quantity">
+                  <form action="/update-cart/<%= product._id %>" method="POST" style="display:flex; gap: var(--space-2); align-items:center;">
+                    <input type="number" name="quantity" value="<%= product.quantity %>" min="1" />
+                    <button type="submit" style="padding: var(--space-1) var(--space-2); border: 1px solid var(--color-gray-300); background-color: var(--color-white); border-radius: var(--radius-1); cursor: pointer; font-size: var(--font-size-xs);">Update</button>
+                  </form>
+                </div>
+              </td>
+              <td class="cart-total-price">
+                $<%= product.itemTotal.toFixed(2) %>
+              </td>
+              <td>
+                <a href="/remove-from-cart/<%= product._id %>" class="cart-remove-btn">Remove</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Subtotal</td>
+            <td class="cart-total-price">$<%= total %></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="cart-summary">
+      <div class="cart-summary-section">
+        <h3 class="heading-4" style="margin: 0;">Order Summary</h3>
+        <div class="cart-summary-item">
+          <span class="cart-summary-label">Subtotal</span>
+          <span class="cart-summary-value">$<%= total.toFixed(2) %></span>
+        </div>
+        <div class="cart-summary-item" style="border-bottom: none; padding-top: var(--space-3); padding-bottom: 0;">
+          <span class="cart-summary-label" style="color: var(--color-black); font-weight: 600;">Total</span>
+          <span class="cart-summary-total">$<%= total.toFixed(2) %></span>
+        </div>
+      </div>
+
+      <div class="cart-summary-section">
+        <div class="cart-actions">
+          <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+          <a href="/" class="btn btn-ghost">Continue Shopping</a>
+        </div>
+        <p class="text-muted" style="font-size: var(--font-size-sm); margin: 0; text-align: center;">
+          We accept all major payment methods
+        </p>
+      </div>
+    </div>
+  <% } %>
+</section>

@@ -1,0 +1,41 @@
+<section class="container">
+  <div class="auth-container">
+    <div class="auth-card">
+      <header class="auth-header">
+        <h1>Create Account</h1>
+        <p>Join us and start your shopping journey today.</p>
+      </header>
+
+      <form class="auth-form" action="/register" method="POST" novalidate>
+        <%- include('../layouts/partials/form/input', {
+            id: 'register-name', name: 'name', type: 'text', label: 'Full Name', required: true,
+            value: typeof form !== 'undefined' ? form.name : '',
+            error: typeof errors !== 'undefined' && errors ? errors.name : null,
+            help: 'Please enter your full name.'
+        }) %>
+
+        <%- include('../layouts/partials/form/input', {
+            id: 'register-email', name: 'email', type: 'email', label: 'Email Address', required: true,
+            value: typeof form !== 'undefined' ? form.email : '',
+            error: typeof errors !== 'undefined' && errors ? errors.email : null,
+            help: 'We\'ll send a confirmation to this email.'
+        }) %>
+
+        <%- include('../layouts/partials/form/input', {
+            id: 'register-password', name: 'password', type: 'password', label: 'Password', required: true,
+            value: '',
+            error: typeof errors !== 'undefined' && errors ? errors.password : null,
+            help: 'At least 8 characters recommended.'
+        }) %>
+
+        <div class="auth-actions">
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+      </form>
+
+      <div class="auth-footer">
+        <p>Already have an account? <a href="/login">Sign in here</a></p>
+      </div>
+    </div>
+  </div>
+</section>

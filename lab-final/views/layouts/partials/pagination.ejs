@@ -1,0 +1,28 @@
+<% /*
+Props:
+  page (number) - current page (1-based)
+  totalPages (number) - total page count
+  basePath (string) - optional, default '/'
+  queryString (string) - optional, appended to links (e.g., '?q=foo')
+*/ %>
+<nav aria-label="Pagination" class="pagination-nav">
+  <ul class="pagination-list">
+    <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+      <a class="btn btn-ghost" href="<%= (page <= 1) ? '#' : (basePath || '/') + (page - 1) + (queryString || '') %>" aria-disabled="<%= page <= 1 ? 'true' : 'false' %>">
+        <svg class="icon icon--sm"><use href="/icons.svg#chevron-left"></use></svg>
+        Prev
+      </a>
+    </li>
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === page ? 'active' : '' %>">
+        <a class="btn <%= i === page ? 'btn-secondary' : 'btn-ghost' %>" href="<%= (basePath || '/') + i + (queryString || '') %>"><%= i %></a>
+      </li>
+    <% } %>
+    <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+      <a class="btn btn-ghost" href="<%= (page >= totalPages) ? '#' : (basePath || '/') + (page + 1) + (queryString || '') %>" aria-disabled="<%= page >= totalPages ? 'true' : 'false' %>">
+        Next
+        <svg class="icon icon--sm"><use href="/icons.svg#chevron-right"></use></svg>
+      </a>
+    </li>
+  </ul>
+</nav>

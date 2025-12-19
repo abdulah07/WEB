@@ -1,0 +1,150 @@
+<section class="container" style="margin-top: var(--space-6); margin-bottom: var(--space-8);">
+  <div class="cart-header">
+    <h1 class="heading-2">Checkout</h1>
+    <div class="cart-header-actions">
+      <a href="/cart" class="btn btn-ghost">
+        <svg class="icon icon--sm"><use href="/icons.svg#chevron-left"></use></svg>
+        Back to Cart
+      </a>
+    </div>
+  </div>
+
+  <% if (errors && errors._global) { %>
+    <%- include('../layouts/partials/alerts', { type: 'error', message: errors._global }) %>
+  <% } %>
+
+  <div class="row" style="display:flex; gap: var(--space-6); align-items:flex-start;">
+    <div style="flex: 1 1 60%; max-width: 60%;">
+      <div class="card" style="padding: var(--space-4);">
+        <h2 class="heading-4" style="margin-bottom: var(--space-4);">Shipping Details</h2>
+
+        <form action="/checkout" method="POST" class="stack" style="display:flex; flex-direction:column; gap: var(--space-3);">
+          <%- include('../layouts/partials/form/input', {
+            id: 'fullName',
+            name: 'fullName',
+            label: 'Full Name',
+            type: 'text',
+            value: (values && values.fullName) || '',
+            error: errors && errors.fullName,
+            help: '',
+            required: true
+          }) %>
+
+          <%- include('../layouts/partials/form/input', {
+            id: 'line1',
+            name: 'line1',
+            label: 'Address Line 1',
+            type: 'text',
+            value: (values && values.line1) || '',
+            error: errors && errors.line1,
+            help: '',
+            required: true
+          }) %>
+
+          <%- include('../layouts/partials/form/input', {
+            id: 'line2',
+            name: 'line2',
+            label: 'Address Line 2 (optional)',
+            type: 'text',
+            value: (values && values.line2) || '',
+            error: '',
+            help: '',
+            required: false
+          }) %>
+
+          <div style="display:flex; gap: var(--space-3);">
+            <div style="flex:1;">
+              <%- include('../layouts/partials/form/input', {
+                id: 'city',
+                name: 'city',
+                label: 'City',
+                type: 'text',
+                value: (values && values.city) || '',
+                error: errors && errors.city,
+                help: '',
+                required: true
+              }) %>
+            </div>
+            <div style="flex:1;">
+              <%- include('../layouts/partials/form/input', {
+                id: 'state',
+                name: 'state',
+                label: 'State / Region',
+                type: 'text',
+                value: (values && values.state) || '',
+                error: '',
+                help: '',
+                required: false
+              }) %>
+            </div>
+          </div>
+
+          <div style="display:flex; gap: var(--space-3);">
+            <div style="flex:1;">
+              <%- include('../layouts/partials/form/input', {
+                id: 'postalCode',
+                name: 'postalCode',
+                label: 'Postal Code',
+                type: 'text',
+                value: (values && values.postalCode) || '',
+                error: errors && errors.postalCode,
+                help: '',
+                required: true
+              }) %>
+            </div>
+            <div style="flex:1;">
+              <%- include('../layouts/partials/form/input', {
+                id: 'country',
+                name: 'country',
+                label: 'Country',
+                type: 'text',
+                value: (values && values.country) || '',
+                error: errors && errors.country,
+                help: '',
+                required: true
+              }) %>
+            </div>
+          </div>
+
+          <%- include('../layouts/partials/form/input', {
+            id: 'phone',
+            name: 'phone',
+            label: 'Phone (optional)',
+            type: 'tel',
+            value: (values && values.phone) || '',
+            error: '',
+            help: '',
+            required: false
+          }) %>
+
+          <div style="margin-top: var(--space-4); display:flex; gap: var(--space-3);">
+            <button type="submit" class="btn btn-primary">Place Order</button>
+            <a href="/cart" class="btn btn-ghost">Back to Cart</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div style="flex: 0 0 35%; max-width: 35%;">
+      <div class="card" style="padding: var(--space-4);">
+        <h2 class="heading-4" style="margin-bottom: var(--space-3);">Order Summary</h2>
+        <ul class="stack" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap: var(--space-2);">
+          <% products.forEach(function(product) { %>
+            <li style="display:flex; justify-content:space-between; font-size: var(--font-size-sm);">
+              <span>
+                <%= product.name %> 
+                <span style="color: var(--color-black-50);">× <%= product.quantity %></span>
+              </span>
+              <span>$<%= product.itemTotal.toFixed(2) %></span>
+            </li>
+          <% }) %>
+        </ul>
+        <hr style="margin: var(--space-3) 0;" />
+        <div style="display:flex; justify-content:space-between; font-weight:600;">
+          <span>Total</span>
+          <span>$<%= total.toFixed(2) %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

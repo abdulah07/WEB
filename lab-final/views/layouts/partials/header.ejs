@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand">
+      <span class="store-name">AWESOME STORE</span>
+    </a>
+
+    <nav aria-label="Main" class="main-nav">
+      <ul class="nav-list">
+        <li><a href="/" class="btn btn-ghost">Home</a></li>
+        <li><a href="/contact-us" class="btn btn-ghost">Contact</a></li>
+        <li><a href="/super-admin" class="btn btn-ghost">Super Admin</a></li>
+        <li>
+          <a href="/cart" class="btn btn-primary">
+            <svg class="icon icon--md"><use href="/icons.svg#cart"></use></svg>
+            <span>Cart</span>
+          </a>
+        </li>
+        <% if (user) { %>
+          <li><a href="/my-account" class="btn btn-secondary">My Account</a></li>
+          <li><a href="/logout" class="btn btn-ghost">Logout</a></li>
+        <% } else { %>
+          <li><a href="/login" class="btn btn-secondary">Login</a></li>
+          <li><a href="/register" class="btn btn-ghost">Register</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</header>

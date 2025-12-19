@@ -1,0 +1,16 @@
+<% if (typeof flash !== 'undefined' && flash) { %>
+  <div class="alert <%= flash.type %>">
+    <div class="alert-inner container">
+      <span class="alert-icon" aria-hidden="true">
+        <% if (flash.type === 'success') { %>
+          <svg class="icon icon--md"><use href="/icons.svg#check"></use></svg>
+        <% } else if (flash.type === 'danger' || flash.type === 'error') { %>
+          <svg class="icon icon--md"><use href="/icons.svg#alert"></use></svg>
+        <% } else { %>
+          <svg class="icon icon--md"><use href="/icons.svg#info"></use></svg>
+        <% } %>
+      </span>
+      <span class="alert-message"><%= flash.message %></span>
+    </div>
+  </div>
+<% } %>

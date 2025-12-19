@@ -1,0 +1,51 @@
+<% /*
+  Props:
+  product: { image, title, name, price, department, color, _id }
+  ctaHref (string) - optional
+  ctaLabel (string) - optional
+*/ %>
+
+<article class="product-card">
+  
+  <a href="/product/<%= product._id %>" class="product-card__image-wrapper">
+    <% if (product.image) { %>
+      <img 
+        src="/images/uploaded/<%= product.image %>" 
+        alt="<%= product.title || product.name %>" 
+        class="product-card__image"
+        loading="lazy" 
+      />
+    <% } else { %>
+      <div class="product-card__image" style="background: #eee; display:flex; align-items:center; justify-content:center; color:#999;">
+        No Image
+      </div>
+    <% } %>
+  </a>
+
+  <div class="product-card__body">
+    
+    <% if (product.department || product.color) { %>
+      <div class="product-card__meta">
+        <%= product.department %> <%= product.color ? '• ' + product.color : '' %>
+      </div>
+    <% } %>
+
+    <h3 class="product-card__title">
+      <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+        <%= product.title || product.name %>
+      </a>
+    </h3>
+
+    <div class="product-card__price">
+      $<%= product.price %>
+    </div>
+  </div>
+
+  <div class="product-card__footer">
+    <a href="<%= typeof ctaHref !== 'undefined' ? ctaHref : ('/add-cart/' + product._id) %>" 
+       class="btn btn-secondary btn-ghost">
+       <%= typeof ctaLabel !== 'undefined' ? ctaLabel : 'Add To Cart' %>
+    </a>
+  </div>
+  
+</article>
