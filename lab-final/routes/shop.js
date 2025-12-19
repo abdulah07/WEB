@@ -199,12 +199,27 @@ router.post("/checkout", async function (req, res, next) {
 
     // Clear cart
     res.clearCookie("cart");
-    req.flash("success", "Your order has been placed.");
-    return res.redirect("/cart");
+    return res.redirect(`/order-confirmation/${order._id}`);
   } catch (err) {
     console.error("Error creating order:", err);
     req.flash("error", "Unable to complete checkout. Please try again.");
     return res.redirect("/checkout");
+  }
+});
+
+// Order Confirmation page
+router.get("/order-confirmation/:id", async function (req, res, next) {
+  try {
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      req.flash("error", "Order not found");
+      return res.redirect("/");
+    }
+    res.render("site/order-confirmation", { order });
+  } catch (err) {
+    console.error("Error fetching order:", err);
+    req.flash("error", "Unable to load order confirmation");
+    return res.redirect("/");
   }
 });
 
